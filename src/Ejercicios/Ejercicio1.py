@@ -4,3 +4,4 @@ En la primera aguja estaban apilados setenta y cuatro discos de oro, cada una li
 de pasarlos todos desde la primera aguja a la tercera, con dos condiciones, solo puede moverse un disco a la vez, y ningún disco podrá ponerse en- cima de otro más pequeño. 
 Se dijo a los sacerdotes que, cuando hubieran terminado de mover los discos, llegaría el fin del mundo. Resolver este problema de la Torre de Hanói.
 """
+# hay que hacer uso de las colas para resolverlo
