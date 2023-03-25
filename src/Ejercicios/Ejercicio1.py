@@ -4,100 +4,43 @@ En la primera aguja estaban apilados setenta y cuatro discos de oro, cada una li
 de pasarlos todos desde la primera aguja a la tercera, con dos condiciones, solo puede moverse un disco a la vez, y ningún disco podrá ponerse en- cima de otro más pequeño. 
 Se dijo a los sacerdotes que, cuando hubieran terminado de mover los discos, llegaría el fin del mundo. Resolver este problema de la Torre de Hanói.
 """
-# hay que hacer uso de las colas para resolverlo
 
 
-class Pila:
-    def __init__(self):
-        self.items = []
+class Disco:
+    def __init__(self, nombre):
+        self.nombre = nombre
+        
+class Torre:
+    def __init__(self, nombre):
+        self.nombre = nombre
+        self.discos = []
 
-    def esta_vacia(self):
-        return len(self.items) == 0
+    def agregar_disco(self, disco):
+        if not self.discos or disco.nombre < self.discos[-1].nombre:
+            self.discos.append(disco)
+            return True
+        else:
+            return False
 
-    def apilar(self, item):
-        self.items.append(item)
-
-    def desapilar(self):
-        if self.esta_vacia():
-            return None
-        return self.items.pop()
-
-
-def torre_hanoi_pila(n):
-    A = Pila()
-    B = Pila()
-    C = Pila()
-
-    # Llenar pila A con los n discos
-    for i in range(n, 0, -1):
-        A.apilar(i)
-
-    if n % 2 == 0:
-        while not C.esta_vacia() or not B.esta_vacia():
-            if not C.esta_vacia() and (B.esta_vacia() or C.items[-1] < B.items[-1]):
-                mover_disco(C, B)
-            else:
-                mover_disco(B, C)
+def mover_torres(n, torre1, torre3, torre2):
+    if n == 0:
+        print("No hay discos que mover.")
+    elif n == 1:
+        print(f"Mover disco {torre1.discos[-1].nombre} de torre {torre1.nombre} a torre {torre3.nombre}")
+        torre3.agregar_disco(torre1.discos.pop())
     else:
-        while not C.esta_vacia() or not A.esta_vacia():
-            if not C.esta_vacia() and (A.esta_vacia() or C.items[-1] < A.items[-1]):
-                mover_disco(C, A)
-            else:
-                mover_disco(A, C)
+        mover_torres(n - 1, torre1, torre2, torre3)
+        print(f"Mover disco {torre1.discos[-1].nombre} de torre {torre1.nombre} a torre {torre3.nombre}")
+        torre3.agregar_disco(torre1.discos.pop())
+        mover_torres(n - 1, torre2, torre3, torre1)
+        return True
 
+torre1 = Torre("1")
+torre2 = Torre("2")
+torre3 = Torre("3")
+n = 3
 
-def mover_disco(desde, hacia):
-    disco = desde.desapilar()
-    hacia.apilar(disco)
-    print(f"Mover disco de {desde} a {hacia}")
+for i in range(n, 0, -1): # sirve para agregar los discos a la torre 1 en orden de mayor a menor (de 3 a 1) 
+    torre1.agregar_disco(Disco(str(i))) # str(i) es para convertir el numero a string y poder agregarlo a la torre como nombre del disco 
 
-print(torre_hanoi_pila(4))
-
-
-# class Pila:
-#     def __init__(self):
-#         self.items = []
-
-#     def esta_vacia(self):
-#         return self.items == []
-
-#     def agregar(self, item):
-#         self.items.append(item)
-
-#     def quitar(self):
-#         return self.items.pop()
-
-# def torre_hanoi_pila(n):
-#     pila_origen = Pila()
-#     pila_auxiliar = Pila()
-#     pila_destino = Pila()
-
-#     # Llenar la pila de origen con los discos
-#     for i in range(n, 0, -1):
-#         pila_origen.agregar(i)
-
-#     # Definir la dirección de los movimientos
-#     if n % 2 == 0:
-#         direccion = ["A", "C", "B"]
-#     else:
-#         direccion = ["A", "B", "C"]
-
-#     # Realizar los movimientos
-#     movimiento = 0
-#     while len(pila_destino.items) != n:
-#         movimiento += 1
-#         if movimiento % 3 == 1:
-#             mover_disco(pila_origen, pila_destino, direccion[0], direccion[1])
-#         elif movimiento % 3 == 2:
-#             mover_disco(pila_origen, pila_auxiliar, direccion[0], direccion[2])
-#         else:
-#             mover_disco(pila_auxiliar, pila_destino, direccion[2], direccion[1])
-
-# def mover_disco(pila_origen, pila_destino, origen, destino):
-#     if not pila_origen.esta_vacia() and (pila_destino.esta_vacia() or pila_origen.items[-1] < pila_destino.items[-1]):
-#         disco = pila_origen.quitar()
-#         pila_destino.agregar(disco)
-#         print(f"Mover disco de {origen} a {destino}")
-
-# # Ejemplo de uso para el problema planteado en el ejercicio:
-# print(torre_hanoi_pila(2))
+mover_torres(n, torre1, torre3, torre2)

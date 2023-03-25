@@ -2,6 +2,7 @@
 Realiza el  código para calcular el determinante de una matriz cuadrada de [3 x 3], regla de Sarrus de forma recursiva y de forma iterativa.
 """
 
+
 # FORMA RECURSIVA
 
 import copy
@@ -30,8 +31,9 @@ def determinante_manera_recursiva(Matriz, total=0):
 
     return total # Devolvemos el determinante
 
-# Creamos una matriz cuadrada de tamaño nxn
-n = 3
+# Introductimos el tamaño de la matriz
+n = 8
+# Creamos una matriz cuadrada random de tamaño nxn
 Matriz = [[0] * n for i in range(n)]
 
 # Rellenamos la matriz con valores aleatorios
@@ -65,25 +67,27 @@ Matriz1 = [[1, 2, 3],
 size = len(Matriz1) # El tamaño de la Matriz1
 print("Matriz1: ", Matriz1)
 
-aux = 0 # aux es la variable que almacena el resultado del determinante
-for o in range(0, size): # o es la variable que recorre las filas de la matriz
-    temp = 1 # temp es la variable que almacena el resultado de la multiplicación de los elementos de la fila
-    k = o # k es la variable que recorre las columnas de la matriz
-    for i in range(0, size): # i es la variable que recorre las filas de la matriz
-        temp *= Matriz1[i][k] # Multiplicar los elementos de la fila
-        k += 1  # Incrementar k en 1
-        if k == size: # Si k es igual al tamaño de la matriz
-            k = 0 # k es igual a 0
-    aux += temp # Sumar el resultado de la multiplicación de los elementos de la fila
+def determinante_manera_iterativa(Matriz1):
+    aux = 0 # aux es la variable que almacena el resultado del determinante
+    for o in range(0, size): # o es la variable que recorre las filas de la matriz
+        temp = 1 # temp es la variable que almacena el resultado de la multiplicación de los elementos de la fila
+        k = o # k es la variable que recorre las columnas de la matriz
+        for i in range(0, size): # i es la variable que recorre las filas de la matriz
+            temp *= Matriz1[i][k] # Multiplicar los elementos de la fila
+            k += 1  # Incrementar k en 1
+            if k == size: # Si k es igual al tamaño de la matriz
+                k = 0 # k es igual a 0
+        aux += temp # Sumar el resultado de la multiplicación de los elementos de la fila
 
-for o in range(size-1, -1, -1): # o es la variable que recorre las filas de la matriz
-    temp = 1 # temp es la variable que almacena el resultado de la multiplicación de los elementos de la fila
-    k = o # k es la variable que recorre las columnas de la matriz
-    for i in range(0, size): # i es la variable que recorre las filas de la matriz
-        temp *= Matriz1[i][k] # Multiplicar los elementos de la fila
-        k -= 1 # Decrementar k en 1
-        if k == -1: # Si k es igual a -1
-            k = size - 1 # k es igual al tamaño de la matriz - 1
-    aux -= temp # Restar el resultado de la multiplicación de los elementos de la fila
+    for o in range(size-1, -1, -1): # o es la variable que recorre las filas de la matriz
+        temp = 1 # temp es la variable que almacena el resultado de la multiplicación de los elementos de la fila
+        k = o # k es la variable que recorre las columnas de la matriz
+        for i in range(0, size): # i es la variable que recorre las filas de la matriz
+            temp *= Matriz1[i][k] # Multiplicar los elementos de la fila
+            k -= 1 # Decrementar k en 1
+            if k == -1: # Si k es igual a -1
+                k = size - 1 # k es igual al tamaño de la matriz - 1
+        aux -= temp # Restar el resultado de la multiplicación de los elementos de la fila
+    return aux # Devolver el resultado del determinante
 
-print("El determinante de la matriz1 calculado de manera iterativa es: ", aux)
+print("El determinante de la matriz1 calculado de manera iterativa es: ", determinante_manera_iterativa(Matriz1))

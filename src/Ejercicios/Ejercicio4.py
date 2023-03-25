@@ -124,7 +124,8 @@ class Polinomio(object):
             return True
         else:
             return False
-        
+
+     
 # Prueba de la clase
 
 if __name__ == '__main__':
@@ -143,7 +144,7 @@ if __name__ == '__main__':
 
     deprueba3 = Polinomio.restar(deprueba2, deprueba1)
     print(deprueba3.mostrar())
-
+    print(" dividir")
     deprueba4 = Polinomio.dividir(deprueba1, deprueba2)
     print(deprueba4.mostrar())
 
