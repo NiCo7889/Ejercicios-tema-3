@@ -1,7 +1,9 @@
 import unittest
+# import csv
+# import config
 from Ejercicios import Ejercicio1 as ej1
 from Ejercicios import Ejercicio2 as ej2
-from Ejercicios import Ejercicio3 as ej3
+# from Ejercicios.Ejercicio3 import Ejercicio3 as ej3
 from Ejercicios import Ejercicio4 as ej4
 
 class TestEjercicios(unittest.TestCase):
