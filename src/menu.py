@@ -1,8 +1,8 @@
 import helpers
-from Ejercicios import Ejercicio1 as ej1
-from Ejercicios import Ejercicio2 as ej2
-from Ejercicios import Ejercicio3 as ej3
-from Ejercicios import Ejercicio4 as ej4
+# from Ejercicios import Ejercicio1 as ej1
+# from Ejercicios import Ejercicio2 as ej2
+# from Ejercicios.Ejercicio_3 import Ejercicio3 as ej3
+# from Ejercicios import Ejercicio4 as ej4
 
 
 def iniciar():
@@ -10,8 +10,8 @@ def iniciar():
         helpers.limpiar_pantalla() # cls en Windows
 
         print("========================")
-        print("   Ejercicios tema 3  ")
-        print("  ¿Cuál desea hacer? ")
+        print("       Ejercicios tema 3  ")
+        print("  ¿Qué ejercicio desea hacer? ")
         print("========================")
         print("[1]")
         print("[2]")

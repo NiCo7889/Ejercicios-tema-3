@@ -9,7 +9,7 @@ Se dijo a los sacerdotes que, cuando hubieran terminado de mover los discos, lle
 class Disco:
     def __init__(self, nombre):
         self.nombre = nombre
-        
+       
 class Torre:
     def __init__(self, nombre):
         self.nombre = nombre
@@ -21,7 +21,7 @@ class Torre:
             return True
         else:
             return False
-
+        
 def mover_torres(n, torre1, torre3, torre2):
     if n == 0:
         print("No hay discos que mover.")
@@ -34,13 +34,15 @@ def mover_torres(n, torre1, torre3, torre2):
         torre3.agregar_disco(torre1.discos.pop())
         mover_torres(n - 1, torre2, torre3, torre1)
         return True
+    
+if __name__ == "__main__":
 
-torre1 = Torre("1")
-torre2 = Torre("2")
-torre3 = Torre("3")
-n = 3
+    torre1 = Torre("1")
+    torre2 = Torre("2")
+    torre3 = Torre("3")
+    n = 3
 
-for i in range(n, 0, -1): # sirve para agregar los discos a la torre 1 en orden de mayor a menor (de 3 a 1) 
-    torre1.agregar_disco(Disco(str(i))) # str(i) es para convertir el numero a string y poder agregarlo a la torre como nombre del disco 
+    for i in range(n, 0, -1): # sirve para agregar los discos a la torre 1 en orden de mayor a menor (de 3 a 1) 
+        torre1.agregar_disco(Disco(str(i))) # str(i) es para convertir el numero a string y poder agregarlo a la torre como nombre del disco 
 
-mover_torres(n, torre1, torre3, torre2)
+    mover_torres(n, torre1, torre3, torre2)

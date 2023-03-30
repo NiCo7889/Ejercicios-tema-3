@@ -1,9 +1,10 @@
+import csv
+import config
 import unittest
-# import csv
-# import config
 from Ejercicios import Ejercicio1 as ej1
-from Ejercicios import Ejercicio2 as ej2
-# from Ejercicios.Ejercicio3 import Ejercicio3 as ej3
+from Ejercicios.Ejercicio_2 import Iterativo as it
+from Ejercicios.Ejercicio_2 import Recursivo as re
+from Ejercicios.Ejercicio_3 import Ejercicio3 as ej3
 from Ejercicios import Ejercicio4 as ej4
 
 class TestEjercicios(unittest.TestCase):
@@ -23,13 +24,14 @@ class TestEjercicios(unittest.TestCase):
 
         self.assertEqual(ej1.mover_torres(n, torre1, torre3, torre2), True)
 
+
     def test_determinante_manera_recursiva(self):
         matriz = [
             [1, 2, 3], 
             [4, 5, 6], 
             [7, 8, 9]
         ]
-        self.assertEqual(ej2.determinante_manera_recursiva(matriz), 0)
+        self.assertEqual(re.determinante_manera_recursiva(matriz), 0)
 
     def test_determinante_manera_iterativa(self):
         matriz = [
@@ -37,43 +39,59 @@ class TestEjercicios(unittest.TestCase):
             [4, 5, 6], 
             [7, 8, 9]
         ]
-        self.assertEqual(ej2.determinante_manera_iterativa(matriz), 0)
+        self.assertEqual(it.determinante_manera_iterativa(matriz), 0)
 
 
+    def setUp(self):
 
+        # Se ejecuta antes de cada prueba
+        ej3.naves.lista = [
+            ej3.Nave("Halcón Milenario", 34.37, 4, 6),
+            ej3.Nave("Estrella de la Muerte", 160000, 342, 843342),
+            ej3.Nave("AT-AT Walker", 20.0, 5, 40),
+            ej3.Nave("AT-ST Walker", 8.6, 2, 0),
+            ej3.Nave("Naboo Royal Starship", 76.0, 8, 100),
+            ej3.Nave("Slave I", 21.5, 1, 6),
+        ]
 
+    def test_nave_AT(self):
+        lista = ej3.Nave.nave_AT()
+        self.assertEqual(ej3.nave_AT(lista), True)
 
-#     def setUp(self):
-#         self.naves = [
-#             ej3.Nave("Halcón Milenario", 34.37, 4, 6),
-#             ej3.Nave("Estrella de la Muerte", 160000, 342, 843342),
-#             ej3.Nave("AT-AT Walker", 20.0, 5, 40),
-#             ej3.Nave("AT-ST Walker", 8.6, 2, 0),
-#             ej3.Nave("Naboo Royal Starship", 76.0, 8, 100),
-#             ej3.Nave("Slave I", 21.5, 1, 6),
-#             ej3.Nave("TIE Fighter", 6.4, 1, 0),
-#             ej3.Nave("X-wing", 12.5, 1, 0),
-#             ej3.Nave("Imperial Star Destroyer", 1600.0, 47060, 0),
-#             ej3.Nave("Millennium Falcon", 34.37, 4, 6)
-#         ]
+    def test_puede_llevar_pasajeros(self):
+        lista = ej3.Nave.puede_llevar_pasajeros()
+        self.assertEqual(ej3.puede_llevar_pasajeros(lista), True)
+    def test_ordenar(self):
+        lista = ej3.naves.ordenar()
+        self.assertEqual(ej3.ordenar(lista), True)
 
-#         self.naves_AT = [nave for nave in self.naves if nave.nave_AT()]
+    def test_mostar_naves(self):
+        lista = ej3.naves.mostrar_naves()
+        self.assertEqual(ej3.mostrar_naves(lista), True)
 
-# # naves_AT = [nave for nave in naves if nave.nave_AT()]
-#     # print("\n Naves que comienzan con AT: \n")
-#     # print(naves_AT)
+    def test_naves_mayor_pasajeros(self):
+        lista = ej3.naves.naves_mayor_pasajeros()
+        self.assertEqual(ej3.naves_mayor_pasajeros(lista), True)
 
-#     def test_nave_AT(self):
-#         self.assertEqual(self.naves_AT, "[Nombre: AT-AT Walker, Longutud: 20.0 m, Tripulación: 5, Pasajeros: 40, Nombre: AT-ST Walker, Longutud: 8.6 m, Tripulación: 2, Pasajeros: 0]")
+    def test_nave_mayor_tripulacion(self):
+        lista = ej3.naves.nave_mayor_tripulacion()
+        self.assertEqual(ej3.nave_mayor_tripulacion(lista), True)
 
-#     # def test_nave_AT(self):
-#     #     self.assertEqual(ej3.Nave.nave_AT(), "[Nombre: AT-AT Walker, Longutud: 20.0 m, Tripulación: 5, Pasajeros: 40, Nombre: AT-ST Walker, Longutud: 8.6 m, Tripulación: 2, Pasajeros: 0]")
+    def test_naves_AT(self):
+        lista = ej3.naves.naves_AT()
+        self.assertEqual(ej3.naves_AT(lista), True)
 
-#     # def test_puede_llevar_pasajeros(self):
-#     #     self.assertEqual(ej3.Nave.puede_llevar_pasajeros(6), "[Nombre: Halcón Milenario, Longutud: 34.37 m, Tripulación: 4, Pasajeros: 6, Nombre: Estrella de la Muerte, Longutud: 160000 m, Tripulación: 342, Pasajeros: 843342, Nombre: AT-AT Walker, Longutud: 20.0 m, Tripulación: 5, Pasajeros: 40, Nombre: Naboo Royal Starship, Longutud: 76.0 m, Tripulación: 8, Pasajeros: 100, Nombre: Slave I, Longutud: 21.5 m, Tripulación: 1, Pasajeros: 6, Nombre: Millennium Falcon, Longutud: 34.37 m, Tripulación: 4, Pasajeros: 6]")
+    def test_naves_mas_pasajeros(self):
+        lista = ej3.naves.naves_mas_pasajeros()
+        self.assertEqual(ej3.naves_mas_pasajeros(lista), True)
 
+    def test_nave_mas_pequena(self):
+        lista = ej3.naves.nave_mas_pequena()
+        self.assertEqual(ej3.nave_mas_pequena(lista), True)
 
-
+    def test_nave_mas_grande(self):
+        lista = ej3.naves.nave_mas_grande()
+        self.assertEqual(ej3.nave_mas_grande(lista), True)
 
 
     def setUp(self):

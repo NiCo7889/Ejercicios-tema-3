@@ -10,7 +10,7 @@ Implementar sobre el TDA polinomio desarrollado previamente las siguientes activ
 class Nodo(object):
     # Clase nodo simplemente enlazado
 
-    info, sig = None, None
+    info, sig = None, None # Información y enlace al siguiente nodo
 
 
 class datoPolinomio(object):

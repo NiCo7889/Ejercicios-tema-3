@@ -1,5 +1,5 @@
 """
-Dada una lista de las naves (y vehículos) de Star Wars –consideraremos a todos como naves– de las que conocemos su nombre, largo, tripulación y cantidad de pasajeros, 
+Dada una lista de las naves (y vehículos) de Star Wars -consideraremos a todos como naves- de las que conocemos su nombre, largo, tripulación y cantidad de pasajeros, 
 desarrollar los algoritmos necesarios para resolver las actividades detalladas a continuación:
 - realizar un listado ordenado por nombre de las naves de manera ascendente y por largo de las mismas de manera descendente;
 - mostrar toda la información del “Halcón Milenario” y la “Estrella de la Muerte”;
@@ -75,10 +75,10 @@ class naves:
     def naves_AT():
         return list(filter(lambda nave: nave.nave_AT(), naves.lista))
     
-    # @staticmethod
-    # def naves_mas_pasajeros():
-    #     naves_pueden_llevar_pasajeros = [nave for nave in naves.lista if Nave.puede_llevar_pasajeros(6)]
-    #     return naves_pueden_llevar_pasajeros    
+    @staticmethod
+    def naves_mas_pasajeros():
+        naves_pueden_llevar_pasajeros = [nave for nave in naves.lista if Nave.puede_llevar_pasajeros(6)]
+        return naves_pueden_llevar_pasajeros    
 
     @staticmethod
     def nave_mas_pequena():
@@ -112,69 +112,11 @@ if __name__ == "__main__":
     print("\n Naves que comienzan con AT: \n")
     print(naves.naves_AT())
 
-# #     # Listar todas las naves que pueden llevar seis o más pasajeros
-#     print("\n Naves que pueden llevar seis o más pasajeros: \n")
-#     print(naves.naves_mas_pasajeros(6))
+#     # Listar todas las naves que pueden llevar seis o más pasajeros
+    print("\n Naves que pueden llevar seis o más pasajeros: \n")
+    print(naves.naves_mas_pasajeros(6))
 
 #     # Mostrar toda la información de la nave más pequeña y la más grande
     print("\n Información de la nave más pequeña y la más grande: \n")
     print("Nave más pequeña: ", naves.nave_mas_pequena())
     print("Nave más grande: ", naves.nave_mas_grande())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# # Cuestiones
-# if __name__ == "__main__":
-    
-#     # Ordenar las naves por nombre de manera ascendente y por largo de manera descendente
-#     naves_ordenadas = sorted(naves) # sorted() devuelve una lista ordenada sin modificar la lista original
-#     print("\n Naves ordenadas por nombre de manera ascendente y por largo de manera descendente: \n")
-#     print(naves_ordenadas)
-
-#     # Mostrar la información del Halcón Milenario y la Estrella de la Muerte
-#     halcon_milenario = next(nave for nave in naves if nave == Nave("Halcón Milenario", 0, 0, 0)) # next() devuelve el primer elemento de la lista que cumpla con la condición
-#     estrella_muerte = next(nave for nave in naves if nave == Nave("Estrella de la Muerte", 0, 0, 0)) # next() devuelve el primer elemento de la lista que cumpla con la condición
-#     print("\n Información del Halcón Milenario y la Estrella de la Muerte: \n")
-#     print(halcon_milenario)
-#     print(estrella_muerte)
-
-#     # # Determinar las cinco naves con mayor cantidad de pasajeros
-#     naves_pasajeros = sorted(naves, key=lambda x: x.pasajeros, reverse=True)[:5]
-#     print("\n Naves con mayor cantidad de pasajeros: \n")
-#     print(naves_pasajeros)
-
-#     # Indicar cuál es la nave que requiere mayor cantidad de tripulación
-#     nave_tripulacion_maxima = max(naves, key=lambda x: x.tripulacion)
-#     print("\n Nave que requiere mayor cantidad de tripulación: \n")
-#     print(nave_tripulacion_maxima)
-
-#     # Mostrar todas las naves que comienzan con AT
-#     naves_AT = [nave for nave in naves if nave.nave_AT()]
-#     print("\n Naves que comienzan con AT: \n")
-#     print(naves_AT)
-
-#     # Listar todas las naves que pueden llevar seis o más pasajeros
-#     naves_pueden_llevar_pasajeros = [nave for nave in naves if nave.puede_llevar_pasajeros(6)]
-#     print("\n Naves que pueden llevar seis o más pasajeros: \n")
-#     print(naves_pueden_llevar_pasajeros)
-
-#     # Mostrar toda la información de la nave más pequeña y la más grande
-#     nave_mas_pequena = min(naves, key=lambda x: x.largo)
-#     nave_mas_grande = max(naves, key=lambda x: x.largo)
-#     print("\n Nave más pequeña y la más grande: \n")
-#     print("La nave más pequeña: ", nave_mas_pequena)
-#     print(" La nave más grande: ", nave_mas_grande)
